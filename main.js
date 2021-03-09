@@ -1,10 +1,14 @@
-var http = require('http');
-var dateNow = require('./myfirstmodules');
+const http = require('http')
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/html ; charset=utf-8',
-    });
-    res.write(`A hora atual é: ${dateNow.myDateTime()}`);
-    res.end();
-}).listen(5500);
+const hostname = '127.0.0.1'
+const port = 8080
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-TYpe', 'text/html ; charset=utf-8')
+    res.end('Olá mundão')
+})
+
+server.listen(port, hostname, () => {
+    console.log(`Server is running at http://${hostname}:${port}/`)
+})
